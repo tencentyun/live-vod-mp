@@ -2,7 +2,7 @@ const { yunApiRequest } = require('./lib');
 const { liveConfig } = require('./config');
 const { headUpperCase } = require('./utils');
 
-exports.createRecordTemp = async function(params) {
+async function createRecordTemp (params) {
     const type = headUpperCase(params.type);
     if (!type) {
       throw new Error('invalid type');
@@ -14,10 +14,10 @@ exports.createRecordTemp = async function(params) {
           VodSubAppId: liveConfig.subAppId,
         }
 
-    }, vodConfig);
+    }, liveConfig);
 }
 
-exports.createRecordRule = async function (DomainName, templateId) {
+async function createRecordRule (domainName, templateId) {
   if(!domainName || !templateId) {
     throw new Error('invalid params config');
   }
@@ -33,7 +33,7 @@ exports.createRecordRule = async function (DomainName, templateId) {
  * 创建录制模板并绑定推流域名
  * @param {{type: 'mp4' | 'flv' | 'hls', pushDomain: string}} params 
  */
-exports.initRecordRule = async function(params = {}) {
+async function initRecordRule (params = {}) {
   try {
     const res = await createRecordTemp({
       type: params.type || liveConfig.recordType || 'mp4',
@@ -46,4 +46,10 @@ exports.initRecordRule = async function(params = {}) {
     console.log(e);
     throw e;
   }
+}
+
+module.exports = {
+  createRecordTemp,
+  createRecordRule,
+  initRecordRule
 }

@@ -13,7 +13,7 @@ exports.main = async (event, context) => {
     try {
         if (event && event.operation === 'init') {
             
-            await Promise.all(initRecordRule(), initInactivation());
+            await Promise.all([initRecordRule(), initInactivation()]);
             
         } else {
             switch (reqBody.EventType) {

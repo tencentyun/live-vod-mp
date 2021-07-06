@@ -1,6 +1,6 @@
 const { yunApiRequest } = require('./lib');
 const { vodConfig } = require('./config');
-exports.ads10 = async function(fileId) {
+async function ads10 (fileId) {
     return yunApiRequest({
         Action: 'ProcessMedia',
         FileId: fileId,
@@ -19,12 +19,17 @@ exports.ads10 = async function(fileId) {
     }, vodConfig);
 }
 
-exports.initInactivation = async function() {
+async function initInactivation () {
     return yunApiRequest({
         Action: 'CreateMediaLifeCyclePolicy',
         Name: 'record-inactivation',
         OperationType: 'STANDARD_IA',
         SubAppId: vodConfig.subAppId,
     }, vodConfig);
+}
+
+module.exports = {
+    ads10,
+    initInactivation
 }
 

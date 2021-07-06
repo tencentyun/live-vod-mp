@@ -5,16 +5,21 @@ const baseConfig = {
   subAppId: process.env.SubAppId,
 }
 
-exports.vodConfig = {
+const vodConfig = {
   ...baseConfig,
   serviceType: 'vod',
   apiVersion: '2018-07-17', 
 };
 
-exports.liveConfig = {
+const liveConfig = {
   ...baseConfig,
   serviceType: 'live',
   apiVersion: '2018-08-01', 
   pushDomain: process.env.PushDomain,
   recordType: process.env.RecordType
+}
+
+module.exports = {
+  vodConfig,
+  liveConfig
 }
