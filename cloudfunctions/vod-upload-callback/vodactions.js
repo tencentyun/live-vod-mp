@@ -1,10 +1,10 @@
 const { yunApiRequest } = require('./lib');
-const config = require('./config');
+const { vodConfig } = require('./config');
 exports.ads10 = async function(fileId) {
     return yunApiRequest({
         Action: 'ProcessMedia',
         FileId: fileId,
-        SubAppId: config.subAppId,
+        SubAppId: vodConfig.subAppId,
         MediaProcessTask: {
             AdaptiveDynamicStreamingTaskSet: [{
                 Definition: 10,
@@ -16,5 +16,15 @@ exports.ads10 = async function(fileId) {
                 PositionValue: 0
             }]
         },
-    }, config);
+    }, vodConfig);
 }
+
+exports.initInactivation = async function() {
+    return yunApiRequest({
+        Action: 'CreateMediaLifeCyclePolicy',
+        Name: 'record-inactivation',
+        OperationType: 'STANDARD_IA',
+        SubAppId: vodConfig.subAppId,
+    }, vodConfig);
+}
+

@@ -11,7 +11,6 @@ Page({
     entryInfos: [
       { icon: "../Resources/play.png", title: "直播室-播放", desc: "<live-room-play>", navigateTo: "../live-room-play/play" },
       { icon: "../Resources/push.png", title: "直播室-推流", desc: "<live-room-push>", navigateTo: "../live-room-push/push" },
-      { icon: "../Resources/tic.png", title: "直播室-白板", desc: "<board-component>", navigateTo: "../tic/index/index"},
     ],
     playing: false,
   },

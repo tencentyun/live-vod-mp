@@ -1,5 +1,6 @@
 'use strict';
-const { ads10 }  = require('./actions');
+const { initRecordRule } = require('./liveactions');
+const { ads10, initInactivation }  = require('./vodactions');
 
 exports.main = async (event, context) => {
     console.log(event);
@@ -10,19 +11,24 @@ exports.main = async (event, context) => {
     // VOD 回调发送的数据
     const reqBody = JSON.parse(event.body || "{}");
     try {
-        switch (reqBody.EventType) {
-            case 'NewFileUpload': 
-                const fileId = reqBody.FileUploadEvent.FileId;
-                console.log('---- file uplaod ----');
-                console.log(fileId);
-                const res = await ads10(fileId);
-                console.log('---- process succed ----');
-                console.log(res);
-                result.response = res;
-                break;
-            default: ;
+        if (reqBody.operation === 'init') {
+            
+            await Promise.all(initRecordRule(), initInactivation());
+            
+        } else {
+            switch (reqBody.EventType) {
+                case 'NewFileUpload': 
+                    const fileId = reqBody.FileUploadEvent.FileId;
+                    console.log('---- file uplaod ----');
+                    console.log(fileId);
+                    const res = await ads10(fileId);
+                    console.log('---- process succed ----');
+                    console.log(res);
+                    result.response = res;
+                    break;
+                default: ;
+            }
         }
-        
     } catch(e) {
         result.code = -1;
         result.message = 'api error';

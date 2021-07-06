@@ -21,8 +21,7 @@
   <cover-view style="width:20px;height:50px;margin:50px;">
 
     <cover-view class='bottom_box'>
-            <cover-image class="bottom_button" src="../Resources/{{playing?'suspend':'start'}}.png" bindtap='onPlayClick'></cover-image>
-            <cover-view class='bottom_text' style="color:white;font-size:10px;">关闭</cover-view>
+      <cover-image class="bottom_button" src="../Resources/{{playing?'suspend':'start'}}.png" bindtap='onPlayClick'></cover-image>
     </cover-view>
   </cover-view>
 </view>

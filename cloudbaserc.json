@@ -4,7 +4,7 @@
   "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
   "functionRoot": "cloudfunctions",
   "framework": {
-    "name": "tcb-github-demo",
+    "name": "live-vod-mp",
     "plugins": {
       "fn": {
         "use": "@cloudbase/framework-plugin-function",
@@ -31,16 +31,6 @@
     },
     "requirement": {
       "environment": {
-        "APPID": {
-          "description": "请填写腾讯云账号APPID",
-          "required": true,
-          "default": ""
-        },
-        "pushUrl": {
-          "description": "请填写腾讯云直播推流地址",
-          "required": true,
-          "default": ""
-        },
         "SecretId": {
           "description": "请填写云API SecretId",
           "required": true,
@@ -51,11 +41,28 @@
           "required": true,
           "default": ""
         },
+        "pushDomain": {
+          "description": "请填写小程序云直播推流域名",
+          "required": true
+        },
         "SubAppId": {
           "description": "请填写腾讯云点播应用ID，不填则表示使用主应用",
           "required": false,
           "default": ""
         }
+      }
+    },
+    "hooks": {
+      "postDeploy": {
+        "type": "callFunction",
+        "functions": [
+          {
+            "functionName": "vod-upload-callback",
+            "params": {
+              "operation": "init"
+            }
+          }
+        ]
       }
     }
   }

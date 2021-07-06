@@ -6,12 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    version: 2,
+    // version: 2,
     // liveAppID: 1256342427,
-    liveAppID: 1256927043,
-    pushUrl: 'rtmp://123745.livepush.myqcloud.com/live/demo2?txSecret=b01472e91acd9425663759e461f56d05&txTime=60C9B849',
-    // pushUrl: "rtmp://5000.livepush.myqcloud.com/live/test_1586414058?txSecret=f926085b88e3234fe6cbc55a8a948594&txTime=5E8F467F",
-    // pushUrl: "rtmp://pluginpush001.elementtest.org/live/pluginpush_xx1?txSecret=6846f4e9c79e540a3caaf2f5d37a604f&txTime=5F193406",
+    liveAppID: 1306264703,
+    pushUrl: 'rtmp://demopush.jingxhu.top/live/test?txSecret=0e002c21c2b2679bb4e362885d3e9350&txTime=60E5555C',
     mode: 'SD',
     waitingImage:'https://mc.qcloudimg.com/static/img/daeed8616ac5df256c0591c22a65c4d3/pause_publish.jpg',
     enableCamera:true,
