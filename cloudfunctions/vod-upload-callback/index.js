@@ -11,7 +11,7 @@ exports.main = async (event, context) => {
     // VOD 回调发送的数据
     const reqBody = JSON.parse(event.body || "{}");
     try {
-        if (reqBody.operation === 'init') {
+        if (event && event.operation === 'init') {
             
             await Promise.all(initRecordRule(), initInactivation());
             
