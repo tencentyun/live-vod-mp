@@ -41,7 +41,7 @@
           "required": true,
           "default": ""
         },
-        "pushDomain": {
+        "PushDomain": {
           "description": "请填写小程序云直播推流域名",
           "required": true
         },
