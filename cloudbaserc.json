@@ -49,6 +49,17 @@
           "description": "请填写腾讯云点播应用ID，不填则表示使用主应用",
           "required": false,
           "default": ""
+        },
+        "RecordType": {
+          "description": "请填写录制视频格式，支持MP4、FLV和HLS",
+          "required": false,
+          "validation": {
+            "rule": {
+              "type": "RegExp",
+              "pattern": "^(mp4|flv|hls)$",
+              "flag": "gi"
+          },
+          "default": "mp4"
         }
       }
     },

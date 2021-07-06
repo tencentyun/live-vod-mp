@@ -27,7 +27,7 @@ async function createRecordRule (domainName, templateId) {
     DomainName: domainName,
     StreamName: '',
     TemplateId: templateId,
-  })
+  }, liveConfig);
 }
 /**
  * 创建录制模板并绑定推流域名
@@ -38,8 +38,12 @@ async function initRecordRule (params = {}) {
     const res = await createRecordTemp({
       type: params.type || liveConfig.recordType || 'mp4',
     });
-    const templateId = res.data.TemplateId;
+    const templateId = res.data.Response.TemplateId;
+    console.log('record template created: ', templateId);
     const result = await createRecordRule(params.pushDomain || liveConfig.pushDomain, templateId);
+    if (result.code !== 0) {
+      throw new Error(result.message);
+    }
     return result;
   } catch (e) {
     console.log('---- error ----');
