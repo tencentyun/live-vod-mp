@@ -51,13 +51,15 @@
           "default": ""
         },
         "RecordType": {
-          "description": "请填写录制视频格式，支持MP4、FLV和HLS",
+          "description": "请填写录制视频格式，支持 MP4、FLV 和 HLS",
           "required": false,
           "validation": {
             "rule": {
               "type": "RegExp",
               "pattern": "^(mp4|flv|hls)$",
               "flag": "gi"
+            },
+            "errorMessage": "仅支持 MP4、FLV 和 HLS"
           },
           "default": "mp4"
         }
