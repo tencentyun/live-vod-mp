@@ -11,7 +11,7 @@ async function createRecordTemp (params) {
         Action: 'CreateLiveRecordTemplate',
         TemplateName: 'default-record',
         [`${type}Param`]: {
-          VodSubAppId: liveConfig.subAppId,
+          VodSubAppId: liveConfig.subAppId ? +liveConfig.subAppId : undefined,
         }
 
     }, liveConfig);
