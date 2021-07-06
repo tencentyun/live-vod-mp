@@ -24,7 +24,7 @@ async function initInactivation () {
         Action: 'CreateMediaLifeCyclePolicy',
         Name: 'record-inactivation',
         OperationType: 'STANDARD_IA',
-        SubAppId: vodConfig.subAppId,
+        SubAppId: +vodConfig.subAppId,
     }, vodConfig);
 }
 
