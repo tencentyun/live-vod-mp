@@ -1,6 +1,6 @@
 'use strict';
 const { initRecordRule } = require('./liveactions');
-const { ads10, initInactivation }  = require('./vodactions');
+const { ads10, initInactivation, getRecordMedia }  = require('./vodactions');
 
 exports.main = async (event, context) => {
     console.log(event);
@@ -15,6 +15,9 @@ exports.main = async (event, context) => {
             
             await Promise.all([initRecordRule(), initInactivation()]);
             
+        } else if(event && event.action === 'getRecords' || reqBody.action  === 'getRecords') {
+            const res = await getRecordMedia();
+            result.response = res;
         } else {
             switch (reqBody.EventType) {
                 case 'NewFileUpload': 

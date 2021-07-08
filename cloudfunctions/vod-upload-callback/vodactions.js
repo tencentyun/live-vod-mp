@@ -28,8 +28,18 @@ async function initInactivation () {
     }, vodConfig);
 }
 
+async function getRecordMedia() {
+    return yunApiRequest({
+        Action: 'SearchMedia',
+        Limit: 10,
+        Offset: 0,
+        SourceTypes: ['Record'],
+    }, vodConfig);
+}
+
 module.exports = {
     ads10,
-    initInactivation
+    initInactivation,
+    getRecordMedia
 }
 

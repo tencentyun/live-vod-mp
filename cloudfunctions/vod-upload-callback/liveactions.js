@@ -11,6 +11,9 @@ async function createRecordTemp (params) {
         Action: 'CreateLiveRecordTemplate',
         TemplateName: 'default-record',
         [`${type}Param`]: {
+          Enable: 1,
+          RecordInterval: 1800,
+          StorageTime: 0,
           VodSubAppId: liveConfig.subAppId ? +liveConfig.subAppId : undefined,
         }
 
